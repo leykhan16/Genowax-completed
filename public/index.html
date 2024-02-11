@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Voting Poll</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-image: linear-gradient(45deg, #553c9a, #ee4b2b);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#results {
+    margin-top: 20px;
+    color: crimson;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+h1{
+    font-size: 50px;
+    font-weight: 600;
+    background-image: linear-gradient(to bottom left,#553c9a, #ee4b2b);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-align: center;
+}
+#options{
+    color: #ee4b2b;
+}
+.poll-options {
+            color: #553c9a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Voting Poll</h1>
+        <form id="votingForm">
+            <label  for="option1">
+                <input class="poll-option"  type="radio" name="vote" id="option1" value="Gala Nights"> Gala Nights
+            </label>
+            <label for="option2">
+                <input class="poll-option" type="radio" name="vote" id="option2" value="Award Sessions"> Award Sessions
+            </label>
+            <label for="option3">
+                <input type="radio" name="vote" id="option3" value="Networking"> Networking
+            </label>
+            <label for="option4">
+                <input type="radio" name="vote" id="option4" value="Raffle Draws & Games"> Raffle Draws & Games
+            </label>
+
+            <label for="option5">
+                <input type="radio" name="vote" id="option4" value="Red/Velvet Carpet Thrill"> Red/Velvet Carpet Thrill
+            </label>
+            <button type="button" onclick="submitVote()">Vote</button>
+        </form>
+        <div id="results">
+            
+            <ul id="resultsList">
+                <!-- Results dynamically updated with JavaScript -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        async function submitVote() {
+            const selectedOption = document.querySelector('input[name="vote"]:checked');
+            if (!selectedOption) {
+                alert('Please select an option before voting.');
+                return;
+            }
+    
+            // Send vote data to the server
+            const response = await fetch('/submit-vote', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `vote=${selectedOption.value}`,
+            });
+    
+            if (response.ok) {
+                alert('Thank you for voting!');
+                // Update results after a successful vote
+                updateResults();
+            } else {
+                alert('Failed to submit vote. Please try again.');
+            }
+        }
+    
+        async function updateResults() {
+            // Fetch and display voting results from the server
+            const resultsResponse = await fetch('/get-results');
+            const results = await resultsResponse.json();
+    
+            const resultsList = document.getElementById('resultsList');
+            resultsList.innerHTML = ''; // Clear previous results
+    
+        }
+    </script>
+    
+
+    <li><a href="/home.html">Go Back Home</a></li> 
+</body>
+</html>

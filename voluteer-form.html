@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bio-data Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      background-color: #f5f5f5;
+    }
+
+    form {
+      max-width: 400px;
+      width: 100vw;
+      padding: 40px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+
+      
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: red;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="bioForm">
+    <label for="" style="text-align: center; font-size: 20px; margin-bottom: 20px;">Volunteer Registrastion Form</label> <br>
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="age">Email:</label>
+    <input type="number" id="age" name="age" required>
+
+    <label for="age">Phone Number:</label>
+    <input type="number" id="age" name="age" required>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+     </select>
+
+    <label for="fullName">Street Addres:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="fullName">City of Residence:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="fullName">State of Residence:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="fullName">Country of Residence:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="gender">Preferred area of involvement:</label>
+    <select id="gender" name="gender" required>
+      <option value="male">Gala Night</option>
+      <option value="female">Award Session</option>
+      <option value="other">Networking</option>
+      <option value="other">Raffle Draws & Games</option>
+      <option value="other">Red/Velvet Carpet Thrill</option>
+      </select>
+
+      <label for="gender">How did you hear about Genowax360Hub City Film Hangout?</label>
+    <select id="gender" name="gender" required>
+      <option value="male">Twitter</option>
+      <option value="female">Friends</option>
+      <option value="other">Facebook</option>
+      <option value="other">LinkedIn</option>
+      <optiont value="other">Other </option>
+      </select>
+      <br>
+ 
+      <label for="" style="font-weight: 500;">I understand that volunteering for Genowax360Hub City Film Hangout is a commitment, and i am willing to contribute
+        my time and skills to make the event a success.  </label>
+      <br>
+    <button type="button" onclick="submitForm()">Submit</button>
+    <button  type="button"  style="margin-left: 100px;"><a href="form.html" style="text-decoration: none; color: #fff;">Back</a></button>
+
+  </form>
+
+  <script>
+    function submitForm() {
+      const fullName = document.getElementById('fullName').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+
+      // You can handle the collected data as needed (e.g., send to a server).
+      console.log('Full Name:', fullName);
+      console.log('Age:', age);
+      console.log('Gender:', gender);
+
+      // Additional logic or AJAX request can be added here.
+    }
+  </script>
+
+</body>
+</html>
